@@ -35,10 +35,14 @@ public:
     ExtractorNode():bNoMore(false){}
 
     void DivideNode(ExtractorNode &n1, ExtractorNode &n2, ExtractorNode &n3, ExtractorNode &n4);
-
+    // 存储分配到该节点区域的所有特征点
     std::vector<cv::KeyPoint> vKeys;
+    // 每一个节点的四个坐标，左上，右上，左下，右下
     cv::Point2i UL, UR, BL, BR;
+    // 遍历所有生成的节点
     std::list<ExtractorNode>::iterator lit;
+    // 是否继续划分标志位
+    // 根据该节点中被分配的特征点的数目来决定是否继续对其分割
     bool bNoMore;
 };
 
